@@ -1,7 +1,7 @@
 // Tabs
 @tab-border: 1px solid @tab-border-color;
 @title-padding: 0.66em;
-@icon-padding-top: 0.65em; // 2.5 (total) - 1.5 (text) / 2
+@icon-padding-top: 0.72em; // 2.5 (total) - 1.5 (text) / 2
 @icon-padding-right: 0.6em;
 @modifed-color: lighten(@background-color-warning, 5%);
 @new-color: @background-color-success;
@@ -37,6 +37,8 @@
         border-left: @tab-border;
         cursor: pointer;
         transition: all 0.08s ease-out;
+        // min-width: 12em !important;
+        max-width: 18em !important;
 
         &:first-of-type {
             border-left-color: transparent;
@@ -92,8 +94,8 @@
 
             &::before {
                 z-index: 1;
-                font-size: 1.1em;
-                vertical-align: -.05em; // Adjust center for the 0.1em font-size increase
+                font-size: 1em;
+                vertical-align: -.05em;
                 width: auto;
                 height: auto;
                 pointer-events: none;
@@ -103,6 +105,10 @@
         &:hover {
             background-color: @tab-background-color-active;
             color: darken(@tab-text-color-editor, 10%);
+            // min-width: unset !important;
+            // padding-right: 22px !important;
+            // max-width: unset !important;
+
             .close-icon {
                 transform: scale(1.1);
                 transition-duration: 0.16s;
@@ -113,9 +119,9 @@
             color: @tab-text-color-editor;
             background-color: @primary-color-darken-2;
             box-shadow: inset 0 -1px 0 @tab-border-color, 1px 0 0 @base-border-color;
-            min-width: unset !important;
-            padding-right: 22px !important;
-            max-width: unset !important;
+            // min-width: unset !important;
+            // padding-right: 22px !important;
+            // max-width: unset !important;
         }
 
         &:active {
@@ -147,6 +153,7 @@
                 transform: scale(1);
 
                 &::before {
+                    vertical-align: -2px;
                     content: "\f052";
                     display: inline-block;
                 }
@@ -262,16 +269,18 @@
 
 atom-pane-axis > atom-pane.active,
 atom-pane-container > atom-pane.pane {
-    .tab.active:before {
-        content: "";
-        position: absolute;
-        pointer-events: none;
-        z-index: 2;
-        left: 0; 
-        bottom: 0;
-        width: 100%;
-        height: 1px;
-        background: @accent-color;
+    .tab.active {
+        &:before {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            left: 0;
+            bottom: 0;
+            width: 100%; 
+            height: 1px;
+            background: @accent-color;
+        }
     }
 }
 // hide marker in docks

@@ -10,6 +10,10 @@ atom-workspace {
 	background-color: @app-background-color;
 }
 
+atom-text-editor-minimap {
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 16%), 0 2px 10px 0 rgba(0, 0, 0, 12%);
+}
+
 
 // Scrollbars ------------------------------------
 
@@ -47,6 +51,7 @@ atom-workspace {
 	}
 
 	atom-text-editor {
+		background-color: darken(@editor-background-color, 1%);
 		::-webkit-scrollbar-track {
 			background: @scrollbar-background-color-editor;
 		}
@@ -56,6 +61,11 @@ atom-workspace {
 		::-webkit-scrollbar-thumb {
 			border-color: @scrollbar-background-color-editor;
 			background: @scrollbar-color-editor;
+		}
+		.atom-inline-git-blame[data-screen-row] {
+			&:after {
+				opacity: 0.4;
+			}
 		}
 	}
 }
